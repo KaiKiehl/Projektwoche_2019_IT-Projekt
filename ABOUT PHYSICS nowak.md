@@ -8,6 +8,12 @@ LIST OF MODIFIED FILES
 		--	FOR
 		DEPENDENCY FOR MyPawnMovementComponent.cpp
 		DO NOT CHANGE THE PATHS OF THE FILES
+
+\Projektwoche_2019_It-Projekt\MyProject\Source\MyProject\MovingPawn.cpp
+
+\Projektwoche_2019_It-Projekt\MyProject\Source\MyProject\MovingPawn.h
+
+
 INFORMATION
 --	DO NOT CHANGE DATA HIERARCHY
 
