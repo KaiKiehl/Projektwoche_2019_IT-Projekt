@@ -29,8 +29,20 @@ ADDED MovingPawn.cpp
 ADDED MovingPawn.h
 --	DEPENDENCY
 
-
+08/05/2019
+CHANGED MovingPawn.cpp
 
 VERY IMPORTANT
 
 DATA HAVE TO BE INPLEMENTED FIRST!!!!!!!
+
+
+
+-	-	-	-	-	-	-	-	-	-	-	-	-	-
+ADDITIONAL DEPENDENCIES
+	Unreal Engine 4.22.1
+	-	Turn on Gravity Settings of Entity
+	-	Turn on Simulate Physics Settings of Entity
+	-	Turn on World Gravity Settings of World	(SET IT TO -981)
+	
+	(NOTE: CPP FILES CHANGING THE PROPERTIES, THEY NEED TO BE ACTIVATED)
