@@ -18,7 +18,7 @@ AMovingPawn::AMovingPawn()
 
 	USphereComponent* SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("RootComponent"));
 	RootComponent = SphereComponent;
-	SphereComponent->InitSphereRadius(40.f);
+	SphereComponent->InitSphereRadius(20.f);
 	SphereComponent->SetCollisionProfileName(TEXT("Pawn"));
 
 	UStaticMeshComponent* SphereVisual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Visual Representation"));
@@ -29,7 +29,7 @@ AMovingPawn::AMovingPawn()
 	{
 		SphereVisual->SetStaticMesh(SphereVisualAsset.Object);
 		SphereVisual->SetRelativeLocation(FVector(0.0f, 0.0f, -40.0f));
-		SphereVisual->SetWorldScale3D(FVector(0.8f));
+		SphereVisual->SetWorldScale3D(FVector(1.0f));
 	}
 
 	USpringArmComponent* SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraAttachement"));
@@ -37,7 +37,7 @@ AMovingPawn::AMovingPawn()
 	SpringArm->RelativeRotation = FRotator(-45.f, 0.f, 0.f);
 	SpringArm->TargetArmLength = 400.0f;
 	SpringArm->bEnableCameraLag = true;
-	SpringArm->CameraLagSpeed = 3.0f;
+	SpringArm->CameraLagSpeed = 1.0f;
 
 	UCameraComponent* Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Our Camera"));
 	Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
@@ -46,13 +46,16 @@ AMovingPawn::AMovingPawn()
 
 	OurMovementComponent = CreateDefaultSubobject<UPawnMovementComponent>(TEXT("Custom Move Component"));
 	OurMovementComponent->UpdatedComponent = RootComponent;
+/*
+	UStaticMeshComponent* MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Attachement"));
+	MeshComponent->SetStaticMesh(Sphere);
+*/
 }
 
 // Called when the game starts or when spawned
 void AMovingPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -70,9 +73,7 @@ void AMovingPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	InputComponent->BindAxis("MoveForward", this, &AMovingPawn::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMovingPawn::MoveRight);
 	InputComponent->BindAxis("Turn", this, &AMovingPawn::Turn);
-
 }
-
 
 UPawnMovementComponent* AMovingPawn::GetMovementComponent() const
 {
