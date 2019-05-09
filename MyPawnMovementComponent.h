@@ -1,5 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+/*
 #pragma once
 
 #include "CoreMinimal.h"
@@ -8,7 +8,7 @@
 
 /**
 DEPENDENCY FOR MyPawnMovementComponent.cpp
- */
+ 
 UCLASS()
 class MYPROJECT_API UMyPawnMovementComponent : public UPawnMovementComponent
 {
@@ -18,3 +18,4 @@ public:
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 		override;
 };
+*/
