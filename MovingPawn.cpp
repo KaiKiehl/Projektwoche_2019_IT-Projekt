@@ -1,5 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+/*
 
 #include "MovingPawn.h"
 #include "Camera/CameraComponent.h"
@@ -46,10 +46,10 @@ AMovingPawn::AMovingPawn()
 
 	OurMovementComponent = CreateDefaultSubobject<UPawnMovementComponent>(TEXT("Custom Move Component"));
 	OurMovementComponent->UpdatedComponent = RootComponent;
-/*
+
 	UStaticMeshComponent* MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Attachement"));
 	MeshComponent->SetStaticMesh(Sphere);
-*/
+
 }
 
 // Called when the game starts or when spawned
@@ -102,3 +102,4 @@ void AMovingPawn::Turn(float AxisValue)
 	NewRotation.Yaw += AxisValue;
 	SetActorRotation(NewRotation);
 }
+*/
