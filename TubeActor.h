@@ -13,8 +13,8 @@ UCLASS()
 class PW_2019_ITPROJEKT_API ATubeActor : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	// Variablendeklaration
 	UPROPERTY(EditAnywhere, Category = "PLC-Settings")
@@ -40,16 +40,17 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;	// DELTA TIME = TIME BETWEEN EACH FRAME
+	/*
 	// Check Mouse Click
 	virtual void NotifyActorOnClicked(FKey ButtonPressed);
 
 	// Check Mouseover
 	virtual void NotifyActorBeginCursorOver();
 	virtual void NotifyActorEndCursorOver();
-
+	*/
 #if WITH_EDITOR
 public:
 	virtual void PostInitProperties();
