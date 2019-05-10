@@ -6,7 +6,7 @@
 // Sets default values
 ATubeActor::ATubeActor()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	Root = CreateDefaultSubobject<UBoxComponent>(TEXT("Root"));
 	RootComponent = Root;
@@ -19,26 +19,26 @@ ATubeActor::ATubeActor()
 void ATubeActor::BeginPlay()
 {
 	Super::BeginPlay();
-		FVector NewLocation = GetActorLocation();
-		initXpos = NewLocation.X;
-		if (GetWorld())
+	FVector NewLocation = GetActorLocation();
+	initXpos = NewLocation.X;
+	if (GetWorld())
+	{
+		APlayerController* MyController = GetWorld()->GetFirstPlayerController();
+		if (!MyController)
 		{
-			APlayerController* MyController = GetWorld()->GetFirstPlayerController();
-			if (!MyController)
-			{
-				UE_LOG(LogTemp, Warning, TEXT("ERROR!"));
-				return;
-			}
-			DefaultCursor = MyController->CurrentMouseCursor;
-			UE_LOG(LogTemp, Warning, TEXT("OK!"));
+			UE_LOG(LogTemp, Warning, TEXT("ERROR!"));
+			return;
 		}
-	
+		DefaultCursor = MyController->CurrentMouseCursor;
+		UE_LOG(LogTemp, Warning, TEXT("OK!"));
+	}
+
 }
 
 // Called every frame
 void ATubeActor::Tick(float DeltaTime)
 {
-	
+
 	Super::Tick(DeltaTime);
 	FVector NewLocation = GetActorLocation();
 
@@ -47,9 +47,9 @@ void ATubeActor::Tick(float DeltaTime)
 	int iVz = 1;
 	if (fLift < 0) iVz = -1;
 
-	if (bPressed)
+	if (!bPressed)
 	{
-		if (fLift >= 0)
+		//if (fLift >= 0)
 		{
 			if (NewLocation.X > initXpos - fLift)
 			{
@@ -59,7 +59,7 @@ void ATubeActor::Tick(float DeltaTime)
 				SetActorLocation(NewLocation);
 			}
 		}
-		else
+		//else
 		{
 			if (NewLocation.X < initXpos - fLift)
 			{
@@ -72,7 +72,7 @@ void ATubeActor::Tick(float DeltaTime)
 	}
 	else
 	{
-		if (fLift >= 0)
+		//if (fLift >= 0)
 		{
 			if (NewLocation.X < initXpos)
 			{
@@ -82,7 +82,7 @@ void ATubeActor::Tick(float DeltaTime)
 				SetActorLocation(NewLocation);
 			}
 		}
-		else
+		//else
 		{
 			if (NewLocation.X > initXpos)
 			{
@@ -94,6 +94,7 @@ void ATubeActor::Tick(float DeltaTime)
 		}
 	}
 }
+/*
 void ATubeActor::NotifyActorBeginCursorOver()
 {
 	Super::NotifyActorBeginCursorOver();
@@ -112,7 +113,7 @@ void ATubeActor::NotifyActorEndCursorOver()
 {
 	Super::NotifyActorEndCursorOver();
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Red, FString::Printf(TEXT("OUT")) + this->GetHumanReadableName());
-	
+
 	APlayerController* MyController = GetWorld()->GetFirstPlayerController();
 	MyController->CurrentMouseCursor = DefaultCursor;
 
@@ -124,7 +125,7 @@ void ATubeActor::NotifyActorOnClicked(FKey ButtonPressed)
 	bPressed = !bPressed;
 	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::Yellow, FString::Printf(TEXT("Var bPressed: %d"), bPressed));
 }
-
+*/
 
 #if WITH_EDITOR
 void ATubeActor::PostInitProperties()
